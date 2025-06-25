@@ -68,7 +68,11 @@ export default function Home() {
         className="text-center w-full max-w-4xl"
       >
         <h1 className="text-4xl sm:text-5xl font-bold mb-4">WanderTools</h1>
-        <p className="text-lg text-foreground/80 mb-12">
+        <p
+          className={`text-lg mb-12 ${
+            dark ? "text-neutral-300" : "text-neutral-700"
+          }`}
+        >
           A suite of free, minimal travel tools for digital nomads and
           explorers.
         </p>
@@ -83,17 +87,25 @@ export default function Home() {
               <Link
                 href={href}
                 target="_blank"
-                className="card block p-6 rounded-xl text-center shadow hover:shadow-md transition-all h-full"
+                className={`card block border p-6 rounded-xl text-center shadow hover:shadow-md transition-all h-full ${
+                  dark ? "border-neutral-800" : "border-neutral-200"
+                }`}
               >
                 <div className="flex justify-center mb-4">{icon}</div>
                 <h2 className="text-xl font-semibold mb-1">{name}</h2>
-                <p className="text-sm text-foreground/70">{description}</p>
+                <p
+                  className={`text-sm ${
+                    dark ? "text-neutral-400" : "text-neutral-600"
+                  }`}
+                >
+                  {description}
+                </p>
               </Link>
             </motion.div>
           ))}
         </div>
 
-        <footer className="mt-16 text-xs text-foreground/60">
+        <footer className="mt-16 text-xs text-neutral-500">
           © {new Date().getFullYear()} WanderTools. All rights reserved.
         </footer>
       </motion.div>
