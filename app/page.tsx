@@ -110,9 +110,15 @@ export default function Home() {
         </motion.div>
       </div>
 
-      <footer className="text-center text-xs text-neutral-500 py-6">
-        © {new Date().getFullYear()} WanderTools. All rights reserved.
-      </footer>
+      <motion.div
+        initial={{ opacity: 0, y: -4 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7 }}
+      >
+        <footer className="text-center text-xs text-neutral-500 py-6">
+          © {new Date().getFullYear()} WanderTools. All rights reserved.
+        </footer>
+      </motion.div>
     </main>
   );
 }
