@@ -51,8 +51,8 @@ export default function Home() {
   }, [dark]);
 
   return (
-    <main className="min-h-screen flex flex-col justify-between px-4">
-      <div className="absolute top-6 right-6">
+    <main className="min-h-dvh flex flex-col justify-between px-4 py-6 sm:py-10">
+      <div className="absolute top-4 right-4 sm:top-6 sm:right-6">
         <button
           onClick={() => setDark(!dark)}
           className="text-foreground hover:opacity-80 transition cursor-pointer"
@@ -68,9 +68,9 @@ export default function Home() {
           transition={{ duration: 0.7 }}
           className="text-center w-full max-w-4xl"
         >
-          <h1 className="text-4xl sm:text-5xl font-bold mb-4">WanderTools</h1>
+          <h1 className="text-4xl sm:text-6xl font-bold mb-4">WanderTools</h1>
           <p
-            className={`text-lg mb-12 ${
+            className={`text-base sm:text-lg mb-10 sm:mb-12 ${
               dark ? "text-neutral-300" : "text-neutral-700"
             }`}
           >
@@ -78,7 +78,7 @@ export default function Home() {
             explorers.
           </p>
 
-          <div className="grid sm:grid-cols-3 gap-6">
+          <div className="grid gap-6 sm:grid-cols-3">
             {apps.map(({ name, description, icon, href }) => (
               <motion.div
                 key={name}
@@ -115,7 +115,7 @@ export default function Home() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7 }}
       >
-        <footer className="text-center text-xs text-neutral-500 py-6">
+        <footer className="text-center text-xs text-neutral-500 mt-6 sm:mt-10">
           © {new Date().getFullYear()} WanderTools. All rights reserved.
         </footer>
       </motion.div>
