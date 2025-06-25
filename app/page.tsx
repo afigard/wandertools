@@ -51,7 +51,7 @@ export default function Home() {
   }, [dark]);
 
   return (
-    <main className="min-h-screen flex items-center justify-center px-4">
+    <main className="min-h-screen flex flex-col justify-between px-4">
       <div className="absolute top-6 right-6">
         <button
           onClick={() => setDark(!dark)}
@@ -61,54 +61,58 @@ export default function Home() {
         </button>
       </div>
 
-      <motion.div
-        initial={{ opacity: 0, y: 16 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7 }}
-        className="text-center w-full max-w-4xl"
-      >
-        <h1 className="text-4xl sm:text-5xl font-bold mb-4">WanderTools</h1>
-        <p
-          className={`text-lg mb-12 ${
-            dark ? "text-neutral-300" : "text-neutral-700"
-          }`}
+      <div className="flex-grow flex items-center justify-center">
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          className="text-center w-full max-w-4xl"
         >
-          A suite of free, minimal travel tools for digital nomads and
-          explorers.
-        </p>
+          <h1 className="text-4xl sm:text-5xl font-bold mb-4">WanderTools</h1>
+          <p
+            className={`text-lg mb-12 ${
+              dark ? "text-neutral-300" : "text-neutral-700"
+            }`}
+          >
+            A suite of free, minimal travel tools for digital nomads and
+            explorers.
+          </p>
 
-        <div className="grid sm:grid-cols-3 gap-6">
-          {apps.map(({ name, description, icon, href }) => (
-            <motion.div
-              key={name}
-              whileHover={{ scale: 1.04 }}
-              className="transition-transform"
-            >
-              <Link
-                href={href}
-                target="_blank"
-                className={`card block border p-6 rounded-xl text-center shadow hover:shadow-md transition-all h-full ${
-                  dark ? "border-neutral-800" : "border-neutral-200"
-                }`}
+          <div className="grid sm:grid-cols-3 gap-6">
+            {apps.map(({ name, description, icon, href }) => (
+              <motion.div
+                key={name}
+                whileHover={{ scale: 1.04 }}
+                className="transition-transform"
               >
-                <div className="flex justify-center mb-4">{icon}</div>
-                <h2 className="text-xl font-semibold mb-1">{name}</h2>
-                <p
-                  className={`text-sm ${
-                    dark ? "text-neutral-400" : "text-neutral-600"
+                <Link
+                  href={href}
+                  target="_blank"
+                  className={`card block border p-6 rounded-xl text-center shadow hover:shadow-md transition-all h-full ${
+                    dark
+                      ? "border-neutral-800 bg-[var(--card-bg)]"
+                      : "border-neutral-200 bg-[var(--card-bg)]"
                   }`}
                 >
-                  {description}
-                </p>
-              </Link>
-            </motion.div>
-          ))}
-        </div>
+                  <div className="flex justify-center mb-4">{icon}</div>
+                  <h2 className="text-xl font-semibold mb-1">{name}</h2>
+                  <p
+                    className={`text-sm ${
+                      dark ? "text-neutral-400" : "text-neutral-600"
+                    }`}
+                  >
+                    {description}
+                  </p>
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+      </div>
 
-        <footer className="mt-16 text-xs text-neutral-500">
-          © {new Date().getFullYear()} WanderTools. All rights reserved.
-        </footer>
-      </motion.div>
+      <footer className="text-center text-xs text-neutral-500 py-6">
+        © {new Date().getFullYear()} WanderTools. All rights reserved.
+      </footer>
     </main>
   );
 }
