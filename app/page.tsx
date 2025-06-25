@@ -1,54 +1,102 @@
-import Link from "next/link";
+"use client";
 
-const tools = [
+import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
+import Link from "next/link";
+import {
+  FaPassport,
+  FaExclamationTriangle,
+  FaBullseye,
+  FaMoon,
+  FaSun,
+} from "react-icons/fa";
+
+const apps = [
   {
     name: "WanderAlert",
-    description: "Travel Advisories",
-    href: "https://wanderalert.vercel.app",
-    emoji: "🚨",
+    description: "Check real-time travel advisories.",
+    icon: <FaExclamationTriangle className="text-2xl text-amber-500" />,
+    href: "https://wanderalert.vercel.app/",
   },
   {
     name: "WanderGoal",
-    description: "Travel Goal Tracker",
-    href: "https://www.wandergoal.fr",
-    emoji: "🎯",
+    description: "Track and plan your travel goals.",
+    icon: <FaBullseye className="text-2xl text-[#4CAF50]" />,
+    href: "https://www.wandergoal.fr/",
   },
   {
     name: "WanderVisa",
-    description: "Visa Checker",
-    href: "https://wandervisa-nine.vercel.app",
-    emoji: "🛂",
+    description: "Fast visa checker between countries.",
+    icon: <FaPassport className="text-2xl text-indigo-500" />,
+    href: "https://wandervisa-nine.vercel.app/",
   },
 ];
 
 export default function Home() {
+  const [dark, setDark] = useState(false);
+
+  useEffect(() => {
+    document.documentElement.style.setProperty(
+      "--background",
+      dark ? "#0a0a0a" : "#ffffff"
+    );
+    document.documentElement.style.setProperty(
+      "--foreground",
+      dark ? "#ededed" : "#171717"
+    );
+    document.documentElement.style.setProperty(
+      "--card-bg",
+      dark ? "#1b1b1b" : "#f9f9f9"
+    );
+  }, [dark]);
+
   return (
-    <main className="min-h-screen bg-white text-gray-900 flex flex-col items-center px-4 py-12">
-      <header className="mb-10 text-center">
-        <h1 className="text-4xl font-bold mb-2">WanderTools</h1>
-        <p className="text-lg text-gray-600">
-          Lightweight travel utilities. Built for smart, modern explorers.
+    <main className="min-h-screen flex items-center justify-center px-4">
+      <div className="absolute top-6 right-6">
+        <button
+          onClick={() => setDark(!dark)}
+          className="text-foreground hover:opacity-80 transition cursor-pointer"
+        >
+          {dark ? <FaSun size={20} /> : <FaMoon size={20} />}
+        </button>
+      </div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 16 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7 }}
+        className="text-center w-full max-w-4xl"
+      >
+        <h1 className="text-4xl sm:text-5xl font-bold mb-4">WanderTools</h1>
+        <p className="text-lg text-foreground/80 mb-12">
+          A suite of free, minimal travel tools for digital nomads and
+          explorers.
         </p>
-      </header>
 
-      <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 w-full max-w-5xl">
-        {tools.map((tool) => (
-          <Link
-            key={tool.name}
-            href={tool.href}
-            target="_blank"
-            className="border rounded-2xl p-6 text-center shadow-sm hover:shadow-md transition hover:scale-[1.02]"
-          >
-            <div className="text-4xl mb-3">{tool.emoji}</div>
-            <h2 className="text-xl font-semibold mb-1">{tool.name}</h2>
-            <p className="text-sm text-gray-500">{tool.description}</p>
-          </Link>
-        ))}
-      </section>
+        <div className="grid sm:grid-cols-3 gap-6">
+          {apps.map(({ name, description, icon, href }) => (
+            <motion.div
+              key={name}
+              whileHover={{ scale: 1.04 }}
+              className="transition-transform"
+            >
+              <Link
+                href={href}
+                target="_blank"
+                className="card block p-6 rounded-xl text-center shadow hover:shadow-md transition-all h-full"
+              >
+                <div className="flex justify-center mb-4">{icon}</div>
+                <h2 className="text-xl font-semibold mb-1">{name}</h2>
+                <p className="text-sm text-foreground/70">{description}</p>
+              </Link>
+            </motion.div>
+          ))}
+        </div>
 
-      <footer className="mt-20 text-sm text-gray-500 text-center">
-        <p>© {new Date().getFullYear()} WanderTools. All rights reserved.</p>
-      </footer>
+        <footer className="mt-16 text-xs text-foreground/60">
+          © {new Date().getFullYear()} WanderTools. All rights reserved.
+        </footer>
+      </motion.div>
     </main>
   );
 }
