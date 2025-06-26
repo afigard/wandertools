@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import {
   FaPassport,
   FaExclamationTriangle,
@@ -51,15 +52,26 @@ export default function Home() {
   }, [dark]);
 
   return (
-    <main className="min-h-dvh flex flex-col justify-between px-4 py-6 sm:py-10">
-      <div className="absolute top-4 right-4 sm:top-6 sm:right-6">
+    <main className="min-h-dvh flex flex-col justify-between px-4 py-6 sm:py-8">
+      <header className="flex justify-between items-center w-full max-w-7xl mx-auto px-2 sm:px-4 sm:py-2">
+        <Image
+          src="/favicon.png"
+          alt="WanderTools Logo"
+          width={32}
+          height={32}
+          className="h-6 w-6 sm:h-8 sm:w-8"
+        />
         <button
           onClick={() => setDark(!dark)}
           className="text-foreground hover:opacity-80 transition cursor-pointer"
         >
-          {dark ? <FaSun size={20} /> : <FaMoon size={20} />}
+          {dark ? (
+            <FaSun size={32} className="h-5 w-5 sm:h-7 sm:w-7" />
+          ) : (
+            <FaMoon size={32} className="h-5 w-5 sm:h-7 sm:w-7" />
+          )}
         </button>
-      </div>
+      </header>
 
       <div className="flex-grow flex items-center justify-center">
         <motion.div
@@ -68,7 +80,9 @@ export default function Home() {
           transition={{ duration: 0.7 }}
           className="text-center w-full max-w-4xl"
         >
-          <h1 className="text-4xl sm:text-6xl font-bold mb-4">WanderTools</h1>
+          <h1 className="text-4xl sm:text-6xl font-bold mb-4 bg-gradient-to-br from-indigo-500 to-amber-500 text-transparent bg-clip-text">
+            WanderTools
+          </h1>
           <p
             className={`text-base sm:text-lg mb-10 sm:mb-12 ${
               dark ? "text-neutral-300" : "text-neutral-700"
@@ -88,7 +102,7 @@ export default function Home() {
                 <Link
                   href={href}
                   target="_blank"
-                  className={`card block border p-6 rounded-xl text-center shadow hover:shadow-md transition-all h-full ${
+                  className={`card block border p-6 rounded-xl text-center shadow-md backdrop-blur-sm transition-all h-full ${
                     dark
                       ? "border-neutral-800 bg-[var(--card-bg)]"
                       : "border-neutral-200 bg-[var(--card-bg)]"
@@ -107,6 +121,14 @@ export default function Home() {
               </motion.div>
             ))}
           </div>
+
+          <p
+            className={`text-sm sm:text-base text-muted mt-10 sm:mt-14 ${
+              dark ? "text-neutral-400" : "text-neutral-600"
+            }`}
+          >
+            Trusted by travelers in 40+ countries
+          </p>
         </motion.div>
       </div>
 
@@ -115,8 +137,15 @@ export default function Home() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7 }}
       >
-        <footer className="text-center text-xs text-neutral-500 mt-6 sm:mt-10">
-          © {new Date().getFullYear()} WanderTools. All rights reserved.
+        <footer className="flex justify-between items-center text-xs text-neutral-500 px-4 max-w-7xl mx-auto w-full">
+          <span>© {new Date().getFullYear()} WanderTools.</span>
+          <a
+            href="https://instagram.com/ad.fgrd"
+            target="_blank"
+            className="underline hover:opacity-80"
+          >
+            Contact
+          </a>
         </footer>
       </motion.div>
     </main>
