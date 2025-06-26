@@ -87,7 +87,7 @@ export default function Home() {
           transition={{ duration: 0.7 }}
           className="text-center w-full max-w-4xl"
         >
-          <h1 className="text-4xl sm:text-6xl font-bold mb-4 bg-gradient-to-br from-indigo-500 to-amber-500 text-transparent bg-clip-text">
+          <h1 className="text-5xl sm:text-6xl font-bold mb-4 bg-gradient-to-br from-indigo-500 to-amber-500 text-transparent bg-clip-text">
             WanderTools
           </h1>
           <p
