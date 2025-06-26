@@ -134,7 +134,7 @@ export default function Home() {
               dark ? "text-neutral-400" : "text-neutral-600"
             }`}
           >
-            Trusted by travelers in 40+ countries
+            Trusted by travelers in 40+ countries.
           </p>
         </motion.div>
       </div>
