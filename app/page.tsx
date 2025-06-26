@@ -80,7 +80,7 @@ export default function Home() {
         </button>
       </header>
 
-      <div className="flex-grow flex items-center justify-center">
+      <div className="flex-grow flex items-center justify-center mt-10 sm:mt-0">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
@@ -144,7 +144,7 @@ export default function Home() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7 }}
       >
-        <footer className="flex justify-between items-center text-xs text-neutral-500 px-4 max-w-7xl mx-auto w-full">
+        <footer className="flex justify-between items-center text-xs text-neutral-500 px-4 max-w-7xl mx-auto w-full mt-10 sm:mt-0">
           <span>© {new Date().getFullYear()} WanderTools.</span>
           <a
             href="https://instagram.com/ad.fgrd"
