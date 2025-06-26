@@ -55,7 +55,7 @@ export default function Home() {
     <main className="min-h-dvh flex flex-col justify-between px-4 py-6 sm:py-8">
       <header className="flex justify-between items-center w-full max-w-7xl mx-auto px-2 sm:px-4 sm:py-2">
         <Image
-          src="/favicon.png"
+          src={dark ? "/logo-dark.png" : "/logo-light.png"}
           alt="WanderTools Logo"
           width={32}
           height={32}
