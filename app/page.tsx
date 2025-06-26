@@ -37,6 +37,13 @@ export default function Home() {
   const [dark, setDark] = useState(false);
 
   useEffect(() => {
+    const prefersDark = window.matchMedia(
+      "(prefers-color-scheme: dark)"
+    ).matches;
+    setDark(prefersDark);
+  }, []);
+
+  useEffect(() => {
     document.documentElement.style.setProperty(
       "--background",
       dark ? "#0a0a0a" : "#ffffff"
