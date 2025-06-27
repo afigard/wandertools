@@ -27,7 +27,7 @@ const apps = [
   },
   {
     name: "WanderVisa",
-    description: "Fast visa checker between countries.",
+    description: "Explore visa rules by country.",
     icon: <FaPassport className="text-2xl text-indigo-500" />,
     href: "https://wandervisa-nine.vercel.app/",
   },
