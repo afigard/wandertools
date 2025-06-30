@@ -5,18 +5,19 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import {
-  FaPassport,
-  FaExclamationTriangle,
+  FaAngleDown,
+  FaTriangleExclamation,
   FaBullseye,
+  FaPassport,
   FaMoon,
   FaSun,
-} from "react-icons/fa";
+} from "react-icons/fa6";
 
 const apps = [
   {
     name: "WanderAlert",
     description: "Check real-time travel advisories.",
-    icon: <FaExclamationTriangle className="text-2xl text-amber-500" />,
+    icon: <FaTriangleExclamation className="text-2xl text-amber-500" />,
     href: "https://wanderalert.vercel.app/",
   },
   {
@@ -59,7 +60,7 @@ export default function Home() {
   }, [dark]);
 
   return (
-    <main className="min-h-dvh flex flex-col justify-between px-4 py-6 sm:py-8">
+    <main className="min-h-dvh flex flex-col px-4 py-6 sm:py-8">
       <header className="flex justify-between items-center w-full max-w-7xl mx-auto px-2 sm:px-4 sm:py-2">
         <Image
           src={dark ? "/logo-dark.png" : "/logo-light.png"}
@@ -73,19 +74,22 @@ export default function Home() {
           className="text-foreground hover:opacity-80 transition cursor-pointer"
         >
           {dark ? (
-            <FaSun size={32} className="h-5 w-5 sm:h-7 sm:w-7" />
+            <FaSun size={32} className="h-6 w-6 sm:h-8 sm:w-8" />
           ) : (
-            <FaMoon size={32} className="h-5 w-5 sm:h-7 sm:w-7" />
+            <FaMoon size={32} className="h-6 w-6 sm:h-8 sm:w-8" />
           )}
         </button>
       </header>
 
-      <div className="flex-grow flex items-center justify-center mt-10 sm:mt-0">
+      <section
+        id="hero"
+        className="flex flex-col items-center justify-center flex-grow text-center min-h-screen"
+      >
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
-          className="text-center w-full max-w-4xl"
+          className="w-full max-w-4xl px-4"
         >
           <h1 className="text-5xl sm:text-6xl font-bold mb-4 bg-gradient-to-br from-indigo-500 to-amber-500 text-transparent bg-clip-text">
             WanderTools
@@ -98,63 +102,68 @@ export default function Home() {
             A suite of free, minimal travel tools for digital nomads and
             explorers.
           </p>
+        </motion.div>
 
-          <div className="grid gap-6 sm:grid-cols-3">
-            {apps.map(({ name, description, icon, href }) => (
-              <motion.div
-                key={name}
-                whileHover={{ scale: 1.04 }}
-                className="transition-transform"
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.4 }}
+          className={`mt-6 sm:mt-8 ${
+            dark ? "text-neutral-400" : "text-neutral-600"
+          }`}
+        >
+          <FaAngleDown className="text-2xl" />
+        </motion.div>
+      </section>
+
+      <section
+        id="tools"
+        className="min-h-screen flex flex-col justify-center px-4 py-16 sm:py-24 max-w-7xl mx-auto w-full"
+      >
+        <h2 className="text-3xl sm:text-4xl font-semibold mb-6 text-center bg-gradient-to-br from-indigo-500 to-amber-500 text-transparent bg-clip-text">
+          Tools
+        </h2>
+        <div className="grid gap-6 sm:grid-cols-3">
+          {apps.map(({ name, description, icon, href }) => (
+            <motion.div
+              key={name}
+              whileHover={{ scale: 1.04 }}
+              className="transition-transform"
+            >
+              <Link
+                href={href}
+                target="_blank"
+                className={`card block border p-6 rounded-xl text-center shadow-md backdrop-blur-sm transition-all h-full ${
+                  dark
+                    ? "border-neutral-800 bg-[var(--card-bg)]"
+                    : "border-neutral-200 bg-[var(--card-bg)]"
+                }`}
               >
-                <Link
-                  href={href}
-                  target="_blank"
-                  className={`card block border p-6 rounded-xl text-center shadow-md backdrop-blur-sm transition-all h-full ${
-                    dark
-                      ? "border-neutral-800 bg-[var(--card-bg)]"
-                      : "border-neutral-200 bg-[var(--card-bg)]"
+                <div className="flex justify-center mb-4">{icon}</div>
+                <h2 className="text-xl font-semibold mb-1">{name}</h2>
+                <p
+                  className={`text-sm ${
+                    dark ? "text-neutral-400" : "text-neutral-600"
                   }`}
                 >
-                  <div className="flex justify-center mb-4">{icon}</div>
-                  <h2 className="text-xl font-semibold mb-1">{name}</h2>
-                  <p
-                    className={`text-sm ${
-                      dark ? "text-neutral-400" : "text-neutral-600"
-                    }`}
-                  >
-                    {description}
-                  </p>
-                </Link>
-              </motion.div>
-            ))}
-          </div>
+                  {description}
+                </p>
+              </Link>
+            </motion.div>
+          ))}
+        </div>
+      </section>
 
-          <p
-            className={`text-sm sm:text-base text-muted mt-10 sm:mt-14 ${
-              dark ? "text-neutral-400" : "text-neutral-600"
-            }`}
-          >
-            Trusted by travelers in 40+ countries.
-          </p>
-        </motion.div>
-      </div>
-
-      <motion.div
-        initial={{ opacity: 0, y: -4 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7 }}
-      >
-        <footer className="flex justify-between items-center text-xs text-neutral-500 px-4 max-w-7xl mx-auto w-full mt-10 sm:mt-0">
-          <span>© {new Date().getFullYear()} WanderTools.</span>
-          <a
-            href="https://instagram.com/ad.fgrd"
-            target="_blank"
-            className="underline hover:opacity-80"
-          >
-            Contact
-          </a>
-        </footer>
-      </motion.div>
+      <footer className="flex justify-between items-center text-xs text-neutral-500 px-4 max-w-7xl mx-auto w-full">
+        <span>© {new Date().getFullYear()} WanderTools.</span>
+        <a
+          href="https://instagram.com/ad.fgrd"
+          target="_blank"
+          className="underline hover:opacity-80"
+        >
+          Contact
+        </a>
+      </footer>
     </main>
   );
 }
