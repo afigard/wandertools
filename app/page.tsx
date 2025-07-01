@@ -5,7 +5,6 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import {
-  FaAngleDown,
   FaTriangleExclamation,
   FaBullseye,
   FaPassport,
@@ -102,17 +101,16 @@ export default function Home() {
             A suite of free, minimal travel tools for digital nomads and
             explorers.
           </p>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.4 }}
-          className={`mt-6 sm:mt-8 ${
-            dark ? "text-neutral-400" : "text-neutral-600"
-          }`}
-        >
-          <FaAngleDown className="text-2xl" />
+          <Link
+            href="#tools"
+            className={`z-10 inline-block mt-4 sm:mt-6 px-6 py-3 rounded-full text-sm sm:text-base shadow-md border ${
+              dark
+                ? "border-neutral-800 bg-neutral-900 hover:bg-neutral-800 text-neutral-200"
+                : "border-neutral-200 bg-neutral-100 hover:bg-neutral-200 text-neutral-800"
+            }`}
+          >
+            Explore Tools
+          </Link>
         </motion.div>
       </section>
 
