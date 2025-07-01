@@ -179,6 +179,58 @@ export default function Home() {
         </div>
       </section>
 
+      <section
+        id="waitlist"
+        className="min-h-screen flex flex-col items-center justify-center text-center px-4 py-16 sm:py-24 max-w-7xl mx-auto w-full"
+      >
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          viewport={{ once: true }}
+          className="w-full"
+        >
+          <h2 className="text-3xl sm:text-4xl font-semibold mb-4 text-center bg-gradient-to-br from-indigo-500 to-amber-500 text-transparent bg-clip-text">
+            Waitlist
+          </h2>
+          <p
+            className={`text-base sm:text-lg mb-8 ${
+              dark ? "text-neutral-300" : "text-neutral-700"
+            }`}
+          >
+            Get early access to upcoming tools. Join the waitlist and stay
+            updated.
+          </p>
+
+          <form
+            onSubmit={(e) => e.preventDefault()}
+            className="w-full sm:flex sm:items-center sm:justify-center gap-2"
+          >
+            <input
+              type="email"
+              placeholder="Your email"
+              required
+              className={`w-full sm:w-auto px-4 py-3 rounded-full border text-sm outline-none ${
+                dark
+                  ? "border-neutral-800 bg-neutral-900 text-neutral-200 placeholder:text-neutral-600"
+                  : "border-neutral-300 bg-neutral-100 text-neutral-800 placeholder:text-neutral-400"
+              }`}
+            />
+            <button
+              disabled
+              type="submit"
+              className={`mt-3 sm:mt-0 w-full sm:w-auto px-4 py-3 rounded-full border text-sm outline-none opacity-50 cursor-not-allowed ${
+                dark
+                  ? "border-neutral-800 bg-neutral-900 text-neutral-200"
+                  : "border-neutral-200 bg-neutral-100 text-neutral-800"
+              }`}
+            >
+              Not Yet Open
+            </button>
+          </form>
+        </motion.div>
+      </section>
+
       <footer className="flex justify-between items-center text-xs text-neutral-500 px-4 max-w-7xl mx-auto w-full">
         <span>© {new Date().getFullYear()} WanderTools.</span>
         <a
