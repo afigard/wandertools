@@ -8,6 +8,9 @@ import {
   FaTriangleExclamation,
   FaBullseye,
   FaPassport,
+  FaMoneyCheckDollar,
+  FaSuitcaseRolling,
+  FaEarthEurope,
   FaMoon,
   FaSun,
 } from "react-icons/fa6";
@@ -18,18 +21,42 @@ const apps = [
     description: "Check real-time travel advisories.",
     icon: <FaTriangleExclamation className="text-2xl text-amber-500" />,
     href: "https://wanderalert.vercel.app/",
+    disabled: false,
   },
   {
     name: "WanderGoal",
     description: "Track and plan your travel goals.",
     icon: <FaBullseye className="text-2xl text-[#4CAF50]" />,
     href: "https://www.wandergoal.fr/",
+    disabled: false,
   },
   {
     name: "WanderVisa",
     description: "Explore visa rules by country.",
     icon: <FaPassport className="text-2xl text-indigo-500" />,
     href: "https://wandervisa-nine.vercel.app/",
+    disabled: false,
+  },
+  {
+    name: "WanderBudget",
+    description: "Preview daily travel costs by country.",
+    icon: <FaMoneyCheckDollar className="text-2xl text-neutral-500" />,
+    href: "",
+    disabled: true,
+  },
+  {
+    name: "WanderPack",
+    description: "Organize your travel essentials.",
+    icon: <FaSuitcaseRolling className="text-2xl text-neutral-500" />,
+    href: "",
+    disabled: true,
+  },
+  {
+    name: "WanderSpin",
+    description: "Spin the globe to pick your next trip.",
+    icon: <FaEarthEurope className="text-2xl text-neutral-500" />,
+    href: "",
+    disabled: true,
   },
 ];
 
@@ -122,10 +149,10 @@ export default function Home() {
           Tools
         </h2>
         <div className="grid gap-6 sm:grid-cols-3">
-          {apps.map(({ name, description, icon, href }) => (
+          {apps.map(({ name, description, icon, href, disabled }) => (
             <motion.div
               key={name}
-              whileHover={{ scale: 1.04 }}
+              whileHover={!disabled ? { scale: 1.04 } : {}}
               className="transition-transform"
             >
               <Link
@@ -135,7 +162,7 @@ export default function Home() {
                   dark
                     ? "border-neutral-800 bg-[var(--card-bg)]"
                     : "border-neutral-200 bg-[var(--card-bg)]"
-                }`}
+                } ${disabled ? "opacity-50 pointer-events-none" : ""}`}
               >
                 <div className="flex justify-center mb-4">{icon}</div>
                 <h2 className="text-xl font-semibold mb-1">{name}</h2>
