@@ -145,38 +145,46 @@ export default function Home() {
         id="tools"
         className="min-h-screen flex flex-col justify-center px-4 py-16 sm:py-24 max-w-7xl mx-auto w-full"
       >
-        <h2 className="text-3xl sm:text-4xl font-semibold mb-6 text-center bg-gradient-to-br from-indigo-500 to-amber-500 text-transparent bg-clip-text">
-          Tools
-        </h2>
-        <div className="grid gap-6 sm:grid-cols-3">
-          {apps.map(({ name, description, icon, href, disabled }) => (
-            <motion.div
-              key={name}
-              whileHover={!disabled ? { scale: 1.04 } : {}}
-              className="transition-transform"
-            >
-              <Link
-                href={href}
-                target="_blank"
-                className={`card block border p-6 rounded-xl text-center shadow-md backdrop-blur-sm transition-all h-full ${
-                  dark
-                    ? "border-neutral-800 bg-[var(--card-bg)]"
-                    : "border-neutral-200 bg-[var(--card-bg)]"
-                } ${disabled ? "opacity-50 pointer-events-none" : ""}`}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          viewport={{ once: true }}
+          className="w-full"
+        >
+          <h2 className="text-3xl sm:text-4xl font-semibold mb-6 text-center bg-gradient-to-br from-indigo-500 to-amber-500 text-transparent bg-clip-text">
+            Tools
+          </h2>
+          <div className="grid gap-6 sm:grid-cols-3">
+            {apps.map(({ name, description, icon, href, disabled }) => (
+              <motion.div
+                key={name}
+                whileHover={!disabled ? { scale: 1.04 } : {}}
+                className="transition-transform"
               >
-                <div className="flex justify-center mb-4">{icon}</div>
-                <h2 className="text-xl font-semibold mb-1">{name}</h2>
-                <p
-                  className={`text-sm ${
-                    dark ? "text-neutral-400" : "text-neutral-600"
-                  }`}
+                <Link
+                  href={href}
+                  target="_blank"
+                  className={`card block border p-6 rounded-xl text-center shadow-md backdrop-blur-sm transition-all h-full ${
+                    dark
+                      ? "border-neutral-800 bg-[var(--card-bg)]"
+                      : "border-neutral-200 bg-[var(--card-bg)]"
+                  } ${disabled ? "opacity-50 pointer-events-none" : ""}`}
                 >
-                  {description}
-                </p>
-              </Link>
-            </motion.div>
-          ))}
-        </div>
+                  <div className="flex justify-center mb-4">{icon}</div>
+                  <h2 className="text-xl font-semibold mb-1">{name}</h2>
+                  <p
+                    className={`text-sm ${
+                      dark ? "text-neutral-400" : "text-neutral-600"
+                    }`}
+                  >
+                    {description}
+                  </p>
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
       </section>
 
       <section
