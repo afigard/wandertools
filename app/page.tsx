@@ -86,8 +86,8 @@ export default function Home() {
   }, [dark]);
 
   return (
-    <main className="min-h-dvh flex flex-col px-4 py-6 sm:py-8">
-      <header className="flex justify-between items-center w-full max-w-7xl mx-auto px-2 sm:px-4 sm:py-2">
+    <>
+      <header className="sticky top-0 z-50 bg-[var(--background)]/50 backdrop-blur-sm flex justify-between items-center w-full max-w-7xl mx-auto px-6 py-6 sm:px-4 sm:py-10">
         <Image
           src={dark ? "/logo-dark.png" : "/logo-light.png"}
           alt="WanderTools Logo"
@@ -107,139 +107,141 @@ export default function Home() {
         </button>
       </header>
 
-      <section
-        id="hero"
-        className="flex flex-col items-center justify-center flex-grow text-center min-h-screen"
-      >
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
-          className="w-full max-w-4xl px-4"
+      <main className="min-h-dvh flex flex-col px-4 py-6 sm:py-8">
+        <section
+          id="hero"
+          className="flex flex-col items-center justify-center flex-grow text-center min-h-screen"
         >
-          <h1 className="text-5xl sm:text-6xl font-bold mb-4 bg-gradient-to-br from-indigo-500 to-amber-500 text-transparent bg-clip-text">
-            WanderTools
-          </h1>
-          <p
-            className={`text-base sm:text-lg mb-10 sm:mb-12 ${
-              dark ? "text-neutral-300" : "text-neutral-700"
-            }`}
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+            className="w-full max-w-4xl px-4"
           >
-            A suite of free, minimal travel tools for digital nomads and
-            explorers.
-          </p>
-          <Link
-            href="#tools"
-            className={`z-10 inline-block mt-4 sm:mt-6 px-6 py-3 rounded-full text-sm sm:text-base shadow-md border ${
-              dark
-                ? "border-neutral-800 bg-neutral-900 hover:bg-neutral-800 text-neutral-200"
-                : "border-neutral-200 bg-neutral-100 hover:bg-neutral-200 text-neutral-800"
-            }`}
-          >
-            Explore Tools
-          </Link>
-        </motion.div>
-      </section>
-
-      <section
-        id="tools"
-        className="min-h-screen flex flex-col justify-center px-4 py-16 sm:py-24 max-w-7xl mx-auto w-full"
-      >
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
-          viewport={{ once: true }}
-          className="w-full"
-        >
-          <h2 className="text-3xl sm:text-4xl font-semibold mb-6 text-center bg-gradient-to-br from-indigo-500 to-amber-500 text-transparent bg-clip-text">
-            Tools
-          </h2>
-          <div className="grid gap-6 sm:grid-cols-3">
-            {apps.map(({ name, description, icon, href, disabled }) => (
-              <motion.div
-                key={name}
-                whileHover={!disabled ? { scale: 1.04 } : {}}
-                className="transition-transform"
-              >
-                <Link
-                  href={href}
-                  target="_blank"
-                  className={`card block border p-6 rounded-xl text-center shadow-md backdrop-blur-sm transition-all h-full ${
-                    dark
-                      ? "border-neutral-800 bg-[var(--card-bg)]"
-                      : "border-neutral-200 bg-[var(--card-bg)]"
-                  } ${disabled ? "opacity-50 pointer-events-none" : ""}`}
-                >
-                  <div className="flex justify-center mb-4">{icon}</div>
-                  <h2 className="text-xl font-semibold mb-1">{name}</h2>
-                  <p
-                    className={`text-sm ${
-                      dark ? "text-neutral-400" : "text-neutral-600"
-                    }`}
-                  >
-                    {description}
-                  </p>
-                </Link>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
-      </section>
-
-      <section
-        id="waitlist"
-        className="min-h-screen flex flex-col items-center justify-center text-center px-4 py-16 sm:py-24 max-w-7xl mx-auto w-full"
-      >
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
-          viewport={{ once: true }}
-          className="w-full"
-        >
-          <h2 className="text-3xl sm:text-4xl font-semibold mb-4 text-center bg-gradient-to-br from-indigo-500 to-amber-500 text-transparent bg-clip-text">
-            Waitlist
-          </h2>
-          <p
-            className={`text-base sm:text-lg mb-8 ${
-              dark ? "text-neutral-300" : "text-neutral-700"
-            }`}
-          >
-            Get early access to upcoming tools. Join the waitlist and stay
-            updated.
-          </p>
-
-          <form
-            onSubmit={(e) => e.preventDefault()}
-            className="w-full sm:flex sm:items-center sm:justify-center gap-2"
-          >
-            <input
-              type="email"
-              placeholder="Your email"
-              required
-              className={`w-full sm:w-auto px-4 py-3 rounded-full border text-sm outline-none ${
-                dark
-                  ? "border-neutral-800 bg-neutral-900 text-neutral-200 placeholder:text-neutral-600"
-                  : "border-neutral-300 bg-neutral-100 text-neutral-800 placeholder:text-neutral-400"
-              }`}
-            />
-            <button
-              disabled
-              type="submit"
-              className={`mt-3 sm:mt-0 w-full sm:w-auto px-4 py-3 rounded-full border text-sm outline-none opacity-50 cursor-not-allowed ${
-                dark
-                  ? "border-neutral-800 bg-neutral-900 text-neutral-200"
-                  : "border-neutral-200 bg-neutral-100 text-neutral-800"
+            <h1 className="text-5xl sm:text-6xl font-bold mb-4 bg-gradient-to-br from-indigo-500 to-amber-500 text-transparent bg-clip-text">
+              WanderTools
+            </h1>
+            <p
+              className={`text-base sm:text-lg mb-10 sm:mb-12 ${
+                dark ? "text-neutral-300" : "text-neutral-700"
               }`}
             >
-              Not Yet Open
-            </button>
-          </form>
-        </motion.div>
-      </section>
+              A suite of free, minimal travel tools for digital nomads and
+              explorers.
+            </p>
+            <Link
+              href="#tools"
+              className={`z-10 inline-block mt-4 sm:mt-6 mb-32 px-6 py-3 rounded-full text-sm sm:text-base shadow-md border ${
+                dark
+                  ? "border-neutral-800 bg-neutral-900 hover:bg-neutral-800 text-neutral-200"
+                  : "border-neutral-200 bg-neutral-100 hover:bg-neutral-200 text-neutral-800"
+              }`}
+            >
+              Explore Tools
+            </Link>
+          </motion.div>
+        </section>
 
-      <footer className="flex justify-between items-center text-xs text-neutral-500 px-4 max-w-7xl mx-auto w-full">
+        <section
+          id="tools"
+          className="min-h-screen flex flex-col justify-center px-4 py-16 sm:py-24 max-w-7xl mx-auto w-full"
+        >
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+            viewport={{ once: true }}
+            className="w-full"
+          >
+            <h2 className="text-3xl sm:text-4xl font-semibold mb-6 text-center bg-gradient-to-br from-indigo-500 to-amber-500 text-transparent bg-clip-text">
+              Tools
+            </h2>
+            <div className="grid gap-6 sm:grid-cols-3">
+              {apps.map(({ name, description, icon, href, disabled }) => (
+                <motion.div
+                  key={name}
+                  whileHover={!disabled ? { scale: 1.04 } : {}}
+                  className="transition-transform"
+                >
+                  <Link
+                    href={href}
+                    target="_blank"
+                    className={`card block border p-6 rounded-xl text-center shadow-md backdrop-blur-sm transition-all h-full ${
+                      dark
+                        ? "border-neutral-800 bg-[var(--card-bg)]"
+                        : "border-neutral-200 bg-[var(--card-bg)]"
+                    } ${disabled ? "opacity-50 pointer-events-none" : ""}`}
+                  >
+                    <div className="flex justify-center mb-4">{icon}</div>
+                    <h2 className="text-xl font-semibold mb-1">{name}</h2>
+                    <p
+                      className={`text-sm ${
+                        dark ? "text-neutral-400" : "text-neutral-600"
+                      }`}
+                    >
+                      {description}
+                    </p>
+                  </Link>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        </section>
+
+        <section
+          id="waitlist"
+          className="min-h-screen flex flex-col items-center justify-center text-center px-4 py-16 sm:py-24 max-w-7xl mx-auto w-full"
+        >
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+            viewport={{ once: true }}
+            className="w-full"
+          >
+            <h2 className="text-3xl sm:text-4xl font-semibold mb-4 mt-32 text-center bg-gradient-to-br from-indigo-500 to-amber-500 text-transparent bg-clip-text">
+              Waitlist
+            </h2>
+            <p
+              className={`text-base sm:text-lg mb-8 ${
+                dark ? "text-neutral-300" : "text-neutral-700"
+              }`}
+            >
+              Get early access to upcoming tools. Join the waitlist and stay
+              updated.
+            </p>
+
+            <form
+              onSubmit={(e) => e.preventDefault()}
+              className="w-full sm:flex sm:items-center sm:justify-center gap-2"
+            >
+              <input
+                type="email"
+                placeholder="Your email"
+                required
+                className={`w-full sm:w-auto px-4 py-3 rounded-full border text-sm outline-none ${
+                  dark
+                    ? "border-neutral-800 bg-neutral-900 text-neutral-200 placeholder:text-neutral-600"
+                    : "border-neutral-300 bg-neutral-100 text-neutral-800 placeholder:text-neutral-400"
+                }`}
+              />
+              <button
+                disabled
+                type="submit"
+                className={`mt-3 sm:mt-0 w-full sm:w-auto px-4 py-3 rounded-full border text-sm outline-none opacity-50 cursor-not-allowed ${
+                  dark
+                    ? "border-neutral-800 bg-neutral-900 text-neutral-200"
+                    : "border-neutral-200 bg-neutral-100 text-neutral-800"
+                }`}
+              >
+                Not Yet Open
+              </button>
+            </form>
+          </motion.div>
+        </section>
+      </main>
+
+      <footer className="flex justify-between items-center text-xs text-neutral-500 px-8 py-6 sm:px-4 sm:py-8 max-w-7xl mx-auto w-full">
         <span>© {new Date().getFullYear()} WanderTools.</span>
         <a
           href="https://instagram.com/ad.fgrd"
@@ -249,6 +251,6 @@ export default function Home() {
           Contact
         </a>
       </footer>
-    </main>
+    </>
   );
 }
