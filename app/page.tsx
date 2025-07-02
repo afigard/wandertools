@@ -60,6 +60,38 @@ const apps = [
   },
 ];
 
+const reviews = [
+  {
+    name: "Sofia G.",
+    location: "France",
+    rating: 5,
+    feedback:
+      "WanderTools gave me everything I needed for my solo trip to South America. No fluff, just the essentials. Can’t wait to try WanderBudget!",
+    avatar: "👩🏻",
+  },
+];
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+    },
+  },
+};
+
 export default function Home() {
   const [dark, setDark] = useState(false);
 
@@ -166,10 +198,8 @@ export default function Home() {
                   <Link
                     href={href}
                     target="_blank"
-                    className={`card block border p-6 rounded-xl text-center shadow-md backdrop-blur-sm transition-all h-full ${
-                      dark
-                        ? "border-neutral-800 bg-[var(--card-bg)]"
-                        : "border-neutral-200 bg-[var(--card-bg)]"
+                    className={`card block bg-[var(--card-bg)] border p-6 rounded-xl text-center shadow-md backdrop-blur-sm transition-all h-full ${
+                      dark ? "border-neutral-800" : "border-neutral-200"
                     } ${disabled ? "opacity-50 pointer-events-none" : ""}`}
                   >
                     <div className="flex justify-center mb-4">{icon}</div>
@@ -185,6 +215,75 @@ export default function Home() {
                 </motion.div>
               ))}
             </div>
+          </motion.div>
+        </section>
+
+        <section
+          id="reviews"
+          className="min-h-screen flex flex-col items-center justify-center text-center px-4 py-16 sm:py-24 max-w-7xl mx-auto w-full"
+        >
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+            viewport={{ once: true }}
+            className="w-full"
+          >
+            <h2 className="text-3xl sm:text-4xl font-semibold mb-6 text-center bg-gradient-to-br from-indigo-500 to-amber-500 text-transparent bg-clip-text">
+              Reviews
+            </h2>
+            <motion.div
+              className="grid grid-cols-1 md:grid-cols-1 gap-8 max-w-7xl mx-auto"
+              variants={containerVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-100px" }}
+            >
+              {reviews.map((review, index) => (
+                <motion.div
+                  key={index}
+                  variants={itemVariants}
+                  className={`text-left bg-[var(--card-bg)] rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow border ${
+                    dark ? "border-neutral-800" : "border-neutral-200"
+                  }`}
+                >
+                  <div className="flex items-center gap-4 mb-6">
+                    <span className="text-4xl">{review.avatar}</span>
+                    <div>
+                      <h3 className="font-semibold">{review.name}</h3>
+                      <p
+                        className={`text-sm ${
+                          dark ? "text-neutral-400" : "text-neutral-600"
+                        }`}
+                      >
+                        {review.location}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center gap-1 mb-4">
+                    {[...Array(review.rating)].map((_, i) => (
+                      <svg
+                        key={i}
+                        className="w-5 h-5"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                      >
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                      </svg>
+                    ))}
+                  </div>
+
+                  <p
+                    className={`leading-relaxed ${
+                      dark ? "text-neutral-300" : "text-neutral-700"
+                    }`}
+                  >
+                    {review.feedback}
+                  </p>
+                </motion.div>
+              ))}
+            </motion.div>
           </motion.div>
         </section>
 
