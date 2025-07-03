@@ -178,7 +178,7 @@ export default function Home() {
 
         <section
           id="tools"
-          className="min-h-screen flex flex-col justify-center px-4 py-16 sm:py-24 max-w-7xl mx-auto w-full"
+          className="min-h-screen flex flex-col justify-center text-center px-4 py-16 sm:py-24 max-w-7xl mx-auto w-full"
         >
           <motion.div
             initial={{ opacity: 0, y: 16 }}
@@ -187,9 +187,17 @@ export default function Home() {
             viewport={{ once: true }}
             className="w-full"
           >
-            <h2 className="text-3xl sm:text-4xl font-semibold mb-6 text-center bg-gradient-to-br from-indigo-500 to-amber-500 text-transparent bg-clip-text">
+            <h2 className="text-3xl sm:text-4xl font-semibold mb-4 bg-gradient-to-br from-indigo-500 to-amber-500 text-transparent bg-clip-text">
               Tools
             </h2>
+            <p
+              className={`text-base sm:text-lg mb-8 ${
+                dark ? "text-neutral-300" : "text-neutral-700"
+              }`}
+            >
+              Already powering smarter trips around the world. Here’s what you
+              can use.
+            </p>
             <div className="grid gap-6 sm:grid-cols-3">
               {apps.map(
                 ({ name, description, icon, href, disabled, badge }) => (
@@ -252,9 +260,17 @@ export default function Home() {
             viewport={{ once: true }}
             className="w-full"
           >
-            <h2 className="text-3xl sm:text-4xl font-semibold mb-6 text-center bg-gradient-to-br from-indigo-500 to-amber-500 text-transparent bg-clip-text">
+            <h2 className="text-3xl sm:text-4xl font-semibold mb-4 bg-gradient-to-br from-indigo-500 to-amber-500 text-transparent bg-clip-text">
               Reviews
             </h2>
+            <p
+              className={`text-base sm:text-lg mb-8 ${
+                dark ? "text-neutral-300" : "text-neutral-700"
+              }`}
+            >
+              Trusted by travelers across 5+ countries. Here’s what some of them
+              say.
+            </p>
             <motion.div
               className="grid grid-cols-1 md:grid-cols-1 gap-8 max-w-7xl mx-auto"
               variants={containerVariants}
