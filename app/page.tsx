@@ -333,7 +333,7 @@ export default function Home() {
                     : "border-neutral-200 bg-neutral-100 text-neutral-800"
                 }`}
               >
-                Not Yet Open
+                Launching Soon
               </button>
             </form>
           </motion.div>
