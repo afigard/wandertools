@@ -22,6 +22,7 @@ const apps = [
     icon: <FaTriangleExclamation className="text-2xl text-amber-500" />,
     href: "https://wanderalert.vercel.app/",
     disabled: false,
+    badge: "new",
   },
   {
     name: "WanderGoal",
@@ -36,6 +37,7 @@ const apps = [
     icon: <FaPassport className="text-2xl text-indigo-500" />,
     href: "https://wandervisa-nine.vercel.app/",
     disabled: false,
+    badge: "new",
   },
   {
     name: "WanderBudget",
@@ -189,31 +191,52 @@ export default function Home() {
               Tools
             </h2>
             <div className="grid gap-6 sm:grid-cols-3">
-              {apps.map(({ name, description, icon, href, disabled }) => (
-                <motion.div
-                  key={name}
-                  whileHover={!disabled ? { scale: 1.04 } : {}}
-                  className="transition-transform"
-                >
-                  <Link
-                    href={href}
-                    target="_blank"
-                    className={`card block bg-[var(--card-bg)] border p-6 rounded-xl text-center shadow-md backdrop-blur-sm transition-all h-full ${
-                      dark ? "border-neutral-800" : "border-neutral-200"
-                    } ${disabled ? "opacity-50 pointer-events-none" : ""}`}
+              {apps.map(
+                ({ name, description, icon, href, disabled, badge }) => (
+                  <motion.div
+                    key={name}
+                    whileHover={!disabled ? { scale: 1.04 } : {}}
+                    className="transition-transform relative"
                   >
-                    <div className="flex justify-center mb-4">{icon}</div>
-                    <h2 className="text-xl font-semibold mb-1">{name}</h2>
-                    <p
-                      className={`text-sm ${
-                        dark ? "text-neutral-400" : "text-neutral-600"
-                      }`}
+                    <Link
+                      href={href}
+                      target="_blank"
+                      className={`card block bg-[var(--card-bg)] border p-6 rounded-xl text-center shadow-md backdrop-blur-sm transition-all h-full ${
+                        dark ? "border-neutral-800" : "border-neutral-200"
+                      } ${disabled ? "opacity-50 pointer-events-none" : ""}`}
                     >
-                      {description}
-                    </p>
-                  </Link>
-                </motion.div>
-              ))}
+                      {(disabled || badge === "new") && (
+                        <div
+                          className={`absolute top-2 right-2 z-10 text-xs px-2 py-0.5 rounded-full font-medium shadow-sm tracking-wide ${
+                            disabled
+                              ? dark
+                                ? "bg-neutral-600 text-black"
+                                : "bg-neutral-400 text-white"
+                              : dark
+                              ? "bg-neutral-300 text-black"
+                              : "bg-neutral-700 text-white"
+                          }`}
+                        >
+                          {disabled
+                            ? "Coming Soon"
+                            : badge === "new"
+                            ? "New"
+                            : null}
+                        </div>
+                      )}
+                      <div className="flex justify-center mb-4">{icon}</div>
+                      <h2 className="text-xl font-semibold mb-1">{name}</h2>
+                      <p
+                        className={`text-sm ${
+                          dark ? "text-neutral-400" : "text-neutral-600"
+                        }`}
+                      >
+                        {description}
+                      </p>
+                    </Link>
+                  </motion.div>
+                )
+              )}
             </div>
           </motion.div>
         </section>
