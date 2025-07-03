@@ -26,11 +26,19 @@ export const metadata: Metadata = {
   authors: [{ name: "Adrien Figard" }],
   creator: "Adrien Figard",
   openGraph: {
-    title: "WanderTools – Lightweight Travel Utilities",
+    title: "WanderTools – Travel Tools For Explorers",
     description:
       "Explore WanderTools: fast, focused micro-apps for travelers. Visa info, safety alerts, and planning made simple.",
-    url: "https://wandertools.vercel.app",
+    url: "https://wandertools.online",
     siteName: "WanderTools",
+    images: [
+      {
+        url: "https://wandertools.online/openGraph.png",
+        width: 1200,
+        height: 630,
+        alt: "WanderTools – Travel Tools For Explorers",
+      },
+    ],
     locale: "en_US",
     type: "website",
   },
