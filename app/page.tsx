@@ -71,6 +71,14 @@ const reviews = [
       "WanderTools gave me everything I needed for my solo trip to South America. No fluff, just the essentials. Can’t wait to try WanderBudget!",
     avatar: "👩🏻",
   },
+  {
+    name: "Daniel P.",
+    location: "Portugal",
+    rating: 5,
+    feedback:
+      "WanderTools has become my default launchpad for any trip. I love how fast and focused each tool is.",
+    avatar: "👨🏽‍🦱",
+  },
 ];
 
 const containerVariants = {
@@ -272,7 +280,7 @@ export default function Home() {
               say.
             </p>
             <motion.div
-              className="grid grid-cols-1 md:grid-cols-1 gap-8 max-w-7xl mx-auto"
+              className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-7xl mx-auto"
               variants={containerVariants}
               initial="hidden"
               whileInView="visible"
