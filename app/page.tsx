@@ -10,7 +10,7 @@ import {
   FaPassport,
   FaMoneyCheckDollar,
   FaSuitcaseRolling,
-  FaEarthEurope,
+  FaGlobe,
   FaMoon,
   FaSun,
 } from "react-icons/fa6";
@@ -56,7 +56,7 @@ const apps = [
   {
     name: "WanderSpin",
     description: "Spin the globe to pick your next trip.",
-    icon: <FaEarthEurope className="text-2xl text-neutral-500" />,
+    icon: <FaGlobe className="text-2xl text-neutral-500" />,
     href: "",
     disabled: true,
   },
