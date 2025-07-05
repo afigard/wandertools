@@ -22,7 +22,6 @@ const apps = [
     icon: <FaTriangleExclamation className="text-2xl text-amber-500" />,
     href: "https://wanderalert.vercel.app/",
     disabled: false,
-    badge: "new",
   },
   {
     name: "WanderGoal",
@@ -32,12 +31,19 @@ const apps = [
     disabled: false,
   },
   {
+    name: "WanderSpin",
+    description: "Spin the globe to pick your next trip.",
+    icon: <FaGlobe className="text-2xl text-rose-500" />,
+    href: "https://wanderspin.vercel.app/",
+    disabled: false,
+    badge: "new",
+  },
+  {
     name: "WanderVisa",
     description: "Explore visa rules by country.",
     icon: <FaPassport className="text-2xl text-indigo-500" />,
     href: "https://wandervisa-nine.vercel.app/",
     disabled: false,
-    badge: "new",
   },
   {
     name: "WanderBudget",
@@ -50,13 +56,6 @@ const apps = [
     name: "WanderPack",
     description: "Organize your travel essentials.",
     icon: <FaSuitcaseRolling className="text-2xl text-neutral-500" />,
-    href: "",
-    disabled: true,
-  },
-  {
-    name: "WanderSpin",
-    description: "Spin the globe to pick your next trip.",
-    icon: <FaGlobe className="text-2xl text-neutral-500" />,
     href: "",
     disabled: true,
   },
