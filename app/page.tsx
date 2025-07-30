@@ -19,9 +19,17 @@ const apps = [
   {
     name: "WanderAlert",
     description: "Check real-time travel advisories.",
-    icon: <FaTriangleExclamation className="text-2xl text-amber-500" />,
+    icon: <FaTriangleExclamation className="text-2xl text-orange-500" />,
     href: "https://wanderalert.vercel.app/",
     disabled: false,
+  },
+  {
+    name: "WanderBudget",
+    description: "Preview daily travel costs by country.",
+    icon: <FaMoneyCheckDollar className="text-2xl text-yellow-500" />,
+    href: "https://wanderbudget.vercel.app/",
+    disabled: false,
+    badge: "new",
   },
   {
     name: "WanderGoal",
@@ -44,13 +52,6 @@ const apps = [
     icon: <FaPassport className="text-2xl text-indigo-500" />,
     href: "https://wandervisa-nine.vercel.app/",
     disabled: false,
-  },
-  {
-    name: "WanderBudget",
-    description: "Preview daily travel costs by country.",
-    icon: <FaMoneyCheckDollar className="text-2xl text-neutral-500" />,
-    href: "",
-    disabled: true,
   },
   {
     name: "WanderPack",
@@ -159,7 +160,7 @@ export default function Home() {
             transition={{ duration: 0.7 }}
             className="w-full max-w-4xl px-4"
           >
-            <h1 className="text-5xl sm:text-6xl font-bold mb-4 bg-gradient-to-br from-indigo-500 to-amber-500 text-transparent bg-clip-text">
+            <h1 className="text-5xl sm:text-6xl font-bold mb-4 bg-gradient-to-br from-indigo-500 to-orange-500 text-transparent bg-clip-text">
               WanderTools
             </h1>
             <p
@@ -194,7 +195,7 @@ export default function Home() {
             viewport={{ once: true }}
             className="w-full"
           >
-            <h2 className="text-3xl sm:text-4xl font-semibold mb-4 bg-gradient-to-br from-indigo-500 to-amber-500 text-transparent bg-clip-text">
+            <h2 className="text-3xl sm:text-4xl font-semibold mb-4 bg-gradient-to-br from-indigo-500 to-orange-500 text-transparent bg-clip-text">
               Tools
             </h2>
             <p
@@ -267,7 +268,7 @@ export default function Home() {
             viewport={{ once: true }}
             className="w-full"
           >
-            <h2 className="text-3xl sm:text-4xl font-semibold mb-4 bg-gradient-to-br from-indigo-500 to-amber-500 text-transparent bg-clip-text">
+            <h2 className="text-3xl sm:text-4xl font-semibold mb-4 bg-gradient-to-br from-indigo-500 to-orange-500 text-transparent bg-clip-text">
               Reviews
             </h2>
             <p
@@ -344,7 +345,7 @@ export default function Home() {
             viewport={{ once: true }}
             className="w-full"
           >
-            <h2 className="text-3xl sm:text-4xl font-semibold mb-4 mt-32 text-center bg-gradient-to-br from-indigo-500 to-amber-500 text-transparent bg-clip-text">
+            <h2 className="text-3xl sm:text-4xl font-semibold mb-4 mt-32 text-center bg-gradient-to-br from-indigo-500 to-orange-500 text-transparent bg-clip-text">
               Waitlist
             </h2>
             <p
