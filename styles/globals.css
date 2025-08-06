@@ -27,7 +27,6 @@ body {
 }
 
 .card {
-  background: var(--card-bg);
   color: var(--foreground);
   transition: background var(--transition-speed), color var(--transition-speed);
 }

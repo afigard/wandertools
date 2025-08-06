@@ -62,6 +62,30 @@ const apps = [
   },
 ];
 
+const cheatsheets = [
+  {
+    name: "Cancún",
+    cover: "/cheatsheets/cancun.png",
+    href: "https://wandertools.gumroad.com/l/cancun-cheatsheet",
+    price: "$1.99",
+    disabled: false,
+  },
+  {
+    name: "Tokyo",
+    cover: "/cheatsheets/tokyo.png",
+    href: "",
+    price: "Coming Soon",
+    disabled: true,
+  },
+  {
+    name: "Amsterdam",
+    cover: "/cheatsheets/amsterdam.png",
+    href: "",
+    price: "Coming Soon",
+    disabled: true,
+  },
+];
+
 const reviews = [
   {
     name: "Sofia G.",
@@ -168,8 +192,7 @@ export default function Home() {
                 dark ? "text-neutral-300" : "text-neutral-700"
               }`}
             >
-              A suite of free, minimal travel tools for digital nomads and
-              explorers.
+              Free tools and premium resources to help you travel better.
             </p>
             <Link
               href="#tools"
@@ -253,6 +276,71 @@ export default function Home() {
                   </motion.div>
                 )
               )}
+            </div>
+          </motion.div>
+        </section>
+
+        <section
+          id="resources"
+          className="min-h-screen flex flex-col justify-center text-center px-4 py-16 sm:py-24 max-w-7xl mx-auto w-full"
+        >
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+            viewport={{ once: true }}
+            className="w-full"
+          >
+            <h2 className="text-3xl sm:text-4xl font-semibold mb-6 bg-gradient-to-br from-indigo-500 to-orange-500 text-transparent bg-clip-text">
+              Premium Resources
+            </h2>
+            <h2
+              className={`text-2xl sm:text-3xl font-semibold mb-4 ${
+                dark ? "text-neutral-300" : "text-neutral-700"
+              }`}
+            >
+              Travel Cheatsheets
+            </h2>
+            <p
+              className={`text-base sm:text-lg mb-8 ${
+                dark ? "text-neutral-300" : "text-neutral-700"
+              }`}
+            >
+              Ultra-practical 1-page PDFs to travel smarter in cities around the
+              world.
+            </p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+              {cheatsheets.map(({ name, cover, href, price, disabled }) => (
+                <motion.div
+                  key={name}
+                  whileHover={!disabled ? { scale: 1.04 } : {}}
+                  className="transition-transform relative"
+                >
+                  <Link
+                    href={href}
+                    target="_blank"
+                    className={`card block rounded-xl text-center transition-all h-full ${
+                      disabled ? "opacity-50 pointer-events-none" : ""
+                    }`}
+                  >
+                    <Image
+                      src={cover}
+                      alt={name}
+                      width={500}
+                      height={500}
+                      className="object-contain max-h-[300px] sm:max-h-[240px] w-auto mx-auto rounded-lg mb-4"
+                    />
+                    <h2 className="text-xl font-semibold mb-1">{name}</h2>
+                    <p
+                      className={`text-sm ${
+                        dark ? "text-neutral-400" : "text-neutral-600"
+                      }`}
+                    >
+                      {price}
+                    </p>
+                  </Link>
+                </motion.div>
+              ))}
             </div>
           </motion.div>
         </section>
@@ -353,8 +441,8 @@ export default function Home() {
                 dark ? "text-neutral-300" : "text-neutral-700"
               }`}
             >
-              Get early access to upcoming tools. Join the waitlist and stay
-              updated.
+              Get early access to upcoming tools. Win premium travel resources.
+              Stay updated.
             </p>
 
             <form
