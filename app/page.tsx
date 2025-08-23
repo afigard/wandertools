@@ -14,6 +14,7 @@ import {
   FaMoon,
   FaSun,
 } from "react-icons/fa6";
+import FeedbackForm from "./components/FeedbackForm";
 
 const apps = [
   {
@@ -196,7 +197,7 @@ export default function Home() {
             </p>
             <Link
               href="#tools"
-              className={`z-10 inline-block mt-4 sm:mt-6 mb-32 px-6 py-3 rounded-full text-sm sm:text-base shadow-md border ${
+              className={`z-10 inline-block mt-4 sm:mt-6 mb-32 px-6 py-3 rounded-2xl text-sm sm:text-base shadow-md border ${
                 dark
                   ? "border-neutral-800 bg-neutral-900 hover:bg-neutral-800 text-neutral-200"
                   : "border-neutral-200 bg-neutral-100 hover:bg-neutral-200 text-neutral-800"
@@ -246,7 +247,7 @@ export default function Home() {
                     >
                       {(disabled || badge === "new") && (
                         <div
-                          className={`absolute top-2 right-2 z-10 text-xs px-2 py-0.5 rounded-full font-medium shadow-sm tracking-wide ${
+                          className={`absolute top-2 right-2 z-10 text-xs px-2 py-0.5 rounded-xl font-medium shadow-sm tracking-wide ${
                             disabled
                               ? dark
                                 ? "bg-neutral-600 text-black"
@@ -328,7 +329,7 @@ export default function Home() {
                       alt={name}
                       width={500}
                       height={500}
-                      className="object-contain max-h-[300px] sm:max-h-[240px] w-auto mx-auto rounded-lg mb-4"
+                      className="object-contain max-h-[300px] sm:max-h-[240px] w-auto mx-auto rounded-xl mb-4"
                     />
                     <h2 className="text-xl font-semibold mb-1">{name}</h2>
                     <p
@@ -378,7 +379,7 @@ export default function Home() {
                 <motion.div
                   key={index}
                   variants={itemVariants}
-                  className={`text-left bg-[var(--card-bg)] rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow border ${
+                  className={`text-left bg-[var(--card-bg)] rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow border ${
                     dark ? "border-neutral-800" : "border-neutral-200"
                   }`}
                 >
@@ -447,13 +448,13 @@ export default function Home() {
 
             <form
               onSubmit={(e) => e.preventDefault()}
-              className="w-full sm:flex sm:items-center sm:justify-center gap-2"
+              className="w-full sm:flex sm:items-center sm:justify-center gap-4"
             >
               <input
                 type="email"
                 placeholder="Your email"
                 required
-                className={`w-full sm:w-auto px-4 py-3 rounded-full border text-sm outline-none ${
+                className={`w-full sm:w-auto px-4 py-3 rounded-2xl border text-sm outline-none ${
                   dark
                     ? "border-neutral-800 bg-neutral-900 text-neutral-200 placeholder:text-neutral-600"
                     : "border-neutral-300 bg-neutral-100 text-neutral-800 placeholder:text-neutral-400"
@@ -462,7 +463,7 @@ export default function Home() {
               <button
                 disabled
                 type="submit"
-                className={`mt-3 sm:mt-0 w-full sm:w-auto px-4 py-3 rounded-full border text-sm outline-none opacity-50 cursor-not-allowed ${
+                className={`mt-3 sm:mt-0 w-full sm:w-auto px-4 py-3 rounded-2xl border text-sm outline-none opacity-50 cursor-not-allowed ${
                   dark
                     ? "border-neutral-800 bg-neutral-900 text-neutral-200"
                     : "border-neutral-200 bg-neutral-100 text-neutral-800"
@@ -477,13 +478,7 @@ export default function Home() {
 
       <footer className="flex justify-between items-center text-xs text-neutral-500 px-8 py-6 sm:px-4 sm:py-8 max-w-7xl mx-auto w-full">
         <span>© {new Date().getFullYear()} WanderTools.</span>
-        <a
-          href="https://instagram.com/ad.fgrd"
-          target="_blank"
-          className="underline hover:opacity-80"
-        >
-          Contact
-        </a>
+        <FeedbackForm appName="WanderTools" dark={dark} />
       </footer>
     </>
   );
