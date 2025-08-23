@@ -91,7 +91,7 @@ export default function FeedbackForm({
                   }`}
                   disabled={status === "sending"}
                 >
-                  Cancel
+                  Close
                 </button>
                 <button
                   type="submit"
