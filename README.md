@@ -5,7 +5,9 @@ WanderTools is a lightweight suite of modern travel micro-apps built for digital
 ## **Included Tools**
 
 - ⚠️ [WanderAlert](https://github.com/afigard/wanderalert) – Get real-time travel advisory levels by country.
+- 💵 [WanderBudget](https://github.com/afigard/wanderbudget) – Preview daily travel costs by country.
 - 🎯 [WanderGoal](https://github.com/afigard/wandergoal) – Set, track, and visualize your global travel goals.
+- 🎡 [WanderSpin](https://github.com/afigard/wanderspin) – Spin the globe to pick your next trip.
 - 🛂 [WanderVisa](https://github.com/afigard/wandervisa) – Instantly check visa requirements between countries.
 
 ## **Features**
