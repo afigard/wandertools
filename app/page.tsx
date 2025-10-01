@@ -18,21 +18,6 @@ import FeedbackForm from "./components/FeedbackForm";
 
 const apps = [
   {
-    name: "TripCleaner.com",
-    description: "Turn messy bookings into a trip.",
-    icon: (
-      <Image
-        src="/tripcleaner.png"
-        alt="TripCleaner Logo"
-        width={32}
-        height={32}
-      />
-    ),
-    href: "https://tripcleaner.com/",
-    disabled: false,
-    badge: "new",
-  },
-  {
     name: "WanderAlert",
     description: "Check real-time travel advisories.",
     icon: <FaTriangleExclamation className="text-2xl text-orange-500" />,
@@ -59,6 +44,7 @@ const apps = [
     icon: <FaGlobe className="text-2xl text-rose-500" />,
     href: "https://wanderspin.vercel.app/",
     disabled: false,
+    badge: "new",
   },
   {
     name: "WanderVisa",
@@ -66,6 +52,21 @@ const apps = [
     icon: <FaPassport className="text-2xl text-indigo-500" />,
     href: "https://wandervisa-nine.vercel.app/",
     disabled: false,
+  },
+  {
+    name: "TripCleaner.com",
+    description: "Turn messy bookings into a trip.",
+    icon: (
+      <Image
+        src="/tripcleaner.png"
+        alt="TripCleaner Logo"
+        className="grayscale"
+        width={32}
+        height={32}
+      />
+    ),
+    href: "https://tripcleaner.com/",
+    disabled: true,
   },
   {
     name: "WanderPack",
