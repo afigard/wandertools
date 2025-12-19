@@ -54,18 +54,10 @@ const apps = [
     disabled: false,
   },
   {
-    name: "TripCleaner.com",
-    description: "Turn messy bookings into a trip.",
-    icon: (
-      <Image
-        src="/tripcleaner.png"
-        alt="TripCleaner Logo"
-        className="grayscale"
-        width={32}
-        height={32}
-      />
-    ),
-    href: "https://tripcleaner.com/",
+    name: "WanderPack",
+    description: "Organize your travel essentials.",
+    icon: <FaSuitcaseRolling className="text-2xl text-neutral-500" />,
+    href: "",
     disabled: true,
   },
 ];
